@@ -4,17 +4,7 @@ import ReactDOM from 'react-dom/server';
 import Html from './components/Html';
 import path from 'path';
 import glob from 'glob';
-import Redis from 'ioredis';
 import fs from 'fs';
-const redis = new Redis();
-
-/*
-import Rejson from 'iorejson';
-const redis = new Rejson();
-(async function() {
-  await redis.connect()
-})()
-*/
 
 var router = new Router();
 const reg = /routes\/(\w+)/;
@@ -50,13 +40,6 @@ function defineRoute(route, file) {
             keywords: route.keywords,
             description: route.description,
         };
-        redis.getByLang = function(key) {
-            if (ctx.lang === 'EN') {
-                return redis.get(key + '-en');
-            } else {
-                return redis.get(key);
-            }
-        };
         const chunkName = file.match(reg)[1];
         if (process.env.NODE_ENV !== 'PRODUCTION') {
             const assets = ctx.state.webpackStats.toJson().assetsByChunkName;
@@ -78,9 +61,9 @@ function defineRoute(route, file) {
             );
         }
 
-        const navData = {}
+        const navData = {};
         const footerData = {};
-        const comp = await route.getComp.bind(ctx)(redis, {
+        const comp = await route.getComp.bind(ctx)({
             ...navData,
             ...footerData,
         });

@@ -19,7 +19,8 @@ class Layout extends Component {
         const { className } = this.props;
         return (
             <Fragment>
-              Layout
+                Layout
+                {this.props.children}
             </Fragment>
         );
     }
