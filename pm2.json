@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "fe-www",
+      "name": "react-ssr",
       "script": "src/app.js",
       "env": {
         "NODE_ENV": "PRODUCTION"
@@ -13,9 +13,9 @@
       "log_date_format": "YYYY_MM_DD HH:mm Z",
       "max_memory_restart": "700M",
       "merge_logs": true,
-      "error_file": "/var/threatbook/logs/fe-www/error.log",
-      "out_file": "/var/threatbook/logs/fe-www/out.log",
-      "pid_file": "/var/threatbook/logs/fe-www/fe-www.pid",
+      "error_file": "/var/xingyeqishi/logs/react-ssr/error.log",
+      "out_file": "/var/xingyeqishi/logs/react-ssr/out.log",
+      "pid_file": "/var/xingyeqishi/logs/react-ssr/react-ssr.pid",
       "watch": false
     }
   ]
