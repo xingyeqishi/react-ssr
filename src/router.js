@@ -78,12 +78,8 @@ function defineRoute(route, file) {
             );
         }
 
-        const navData = await redis
-            .getByLang('nav')
-            .then(data => JSON.parse(data));
-        const footerData = await redis
-            .getByLang('footer')
-            .then(data => JSON.parse(data));
+        const navData = {}
+        const footerData = {};
         const comp = await route.getComp.bind(ctx)(redis, {
             ...navData,
             ...footerData,
