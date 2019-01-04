@@ -1,0 +1,21 @@
+$breakpoints: (
+  'phone': 414px,
+  'tablet': 768px,
+  'small-desktop': 885px,
+  'desktop': 1024px
+);
+.button-primary {
+  border: 1px solid #999;
+  background: transparent;
+  color: #333;
+  padding: 13px 64px;
+  transition: all 0.2s ease-out;
+  @include media('<tablet') {
+    padding: 6px 63px;
+  }
+  &:hover {
+    background: #2d84e5;
+    color: #fff;
+    border-color: transparent;
+  }
+}

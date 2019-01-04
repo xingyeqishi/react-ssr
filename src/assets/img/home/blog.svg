@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>博客新闻</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-400.000000, -3509.000000)">
+        <g id="技术博客" transform="translate(0.000000, 3248.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="博客新闻" transform="translate(400.000000, 261.000000)">
+                <path d="M18,23 L44,23 C45.1045695,23 46,23.8954305 46,25 L46,25 C46,26.1045695 45.1045695,27 44,27 L18,27 C16.8954305,27 16,26.1045695 16,25 L16,25 C16,23.8954305 16.8954305,23 18,23 Z" id="Shape"></path>
+                <polygon id="Shape" points="16 33 46 33 46 35 16 35"></polygon>
+                <polygon id="Shape" points="16 39 46 39 46 41 16 41"></polygon>
+                <polygon id="Shape" points="16 45 46 45 46 47 16 47"></polygon>
+                <path d="M62,23 L56,23 L56,12 C55.7142857,10.9328125 54.7878393,10 54,10 L8,10 C6.92655,10 6,10.9328125 6,12 L6,58 C6,59.0682291 6.9264464,60 8,60 L62,60 C63.0735535,60 64,59.0682292 64,58 L64,25 C63.9999999,23.4328125 63.0735535,22.5 62,23 Z M53,57 L9,57 L9,13 L53,13 L53,57 Z M61,57 L56,57 L56,26 L61,26 L61,57 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

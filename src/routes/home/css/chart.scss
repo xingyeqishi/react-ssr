@@ -1,0 +1,537 @@
+@import '~@css/breakpoint.scss';
+@keyframes rotateAnim {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rippleAnim {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+.chart {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  @include media('<=phone') {
+    display: none;
+  }
+  @mixin square($size) {
+    width: $size;
+    height: $size;
+  }
+  .circle {
+    border-radius: 50%;
+    color: #2d84e5;
+    position: absolute;
+    box-sizing: border-box;
+    border-color: rgba(#2d84e5, 0.3);
+    border-style: solid;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s ease;
+    &:hover {
+      border-color: transparent;
+      color: #fff;
+      background: rgba(#2D84E5, 1);
+      &:after {
+        display: inline-block;
+        content: ' ';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        z-index: -1;
+        border-radius: 50%;
+        border: 2px solid rgba(#2d84e5, 0.4);
+        width: auto;
+        height: auto;
+        background: transparent;
+        animation: 3s rippleAnim ease-out infinite;
+        animation-delay: 2s;
+      }
+      &:before {
+        display: inline-block;
+        content: ' ';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        z-index: -1;
+        border: 2px solid rgba(#2d84e5, 0.4);
+        border-radius: 50%;
+        background: transparent;
+        animation: 3s rippleAnim ease-out infinite;
+      }
+    }
+  }
+  .moving-ball {
+    position: absolute;
+    background: rgba(#2d84e5, 0.8);
+    @extend .circle;
+  }
+  .center-node {
+    .line {
+      position: absolute;
+      top: 207px;
+      left: 233px;
+      .outer-line {
+        @include square(162px);
+        background-image: url('~@img/home/chart/out-line.png');
+        animation: 60s rotateAnim linear infinite reverse;
+      }
+      .mid-line {
+        position: absolute;
+        @include square(125px);
+        top: 18px;
+        left: 18px;
+        animation: 32s rotateAnim linear infinite;
+        background-image: url('~@img/home/chart/mid-line.png');
+      }
+      .inner-line {
+        position: absolute;
+        @include square(125px);
+        top: 18px;
+        left: 18px;
+        animation: 20s rotateAnim linear infinite reverse;
+        background-image: url('~@img/home/chart/inner-line.png');
+      }
+    }
+    .center-node-container {
+      @extend .circle;
+      transition: none;
+      @include square(100px);
+      opacity: 1;
+      top: 238px;
+      left: 263px;
+      font-size: 48px;
+      color: #fff;
+      letter-spacing: 4px;
+      border-width: 0;
+      &.len-3 {
+        font-size: 28px;
+      }
+      &.len-4 {
+        font-size: 30px;
+      }
+      &.len-5 {
+        font-size: 24px;
+      }
+      &.len-6 {
+        font-size: 14px;
+      }
+      &:hover {
+        &:before {
+          display: none;
+        }
+      }
+      .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 50%;
+        background-image: linear-gradient(-141deg, #66AAFF 0%, #368DED 92%);
+      }
+      .node-name {
+        z-index: 1;
+      }
+    }
+    .center-node-container {
+      &.scale-enter {
+        .bg {
+          transition: all 0.3s ease-out 0.4s;
+          transform: scale(0.01);
+        }
+        .node-name {
+          transition: all 0.6s linear 0.3s;
+          opacity: 0;
+        }
+      }
+      &.scale-enter-active {
+        .bg {
+          transform: scale(1);
+        }
+        .node-name {
+          opacity: 1;
+        }
+      }
+      &.scale-exit {
+        .node-name {
+          transition: all 0.3s ease-in;
+          opacity: 1;
+        }
+        .bg {
+          transition: all 0.3s ease-in;
+          transform: scale(1);
+        }
+      }
+      &.scale-exit-active {
+        .node-name {
+          opacity: 0;
+        }
+        .bg {
+          transform: scale(0.01);
+        }
+      }
+    }
+  }
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(#2d84e5, 1);
+    transition: transform 0.3s ease-in;
+  }
+  @keyframes move {
+    0% {
+      transform: scale(0.01);
+      opacity: 0;
+    }
+    40% {
+      transform: translate(71px, -45px);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(71px, -45px);
+      opacity: 1;
+    }
+  }
+  .point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #3797fb;
+    top: 205px;
+    left: 408px;
+    opacity: 0;
+    border-radius: 50%;
+    transform: scale(0.01);
+    .arc {
+      display: block;
+      content: ' ';
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      bottom: -4px;
+      right: -4px;
+      background-image: url('~@img/home/chart/point-line.png');
+      transition: opacity 2s ease;
+      opacity: 0;
+    }
+    &.active {
+      animation: move 1.6s forwards;
+    }
+    &.rotate {
+      .arc {
+        opacity: 1;
+        animation: 2s rotateAnim linear infinite;
+      }
+    }
+  }
+  .selected {
+    .bg {
+      transition: border-color 1s ease 1s, background 0.3s ease;
+    }
+    &:hover {
+      @keyframes fadeAnim {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .node-name {
+        animation: fadeAnim 1s ease forwards;
+      }
+      .bg {
+        background: transparent;
+        border-color: rgba(#2d84e5, 0.3);
+        color: #2d84e5;
+      }
+      &:after,
+      .bg:after{
+        display: none;
+      }
+      &:before,
+      .bg:before{
+        display: none;
+      }
+    }
+  }
+  .tdp-node {
+    @include square(84px);
+    position: absolute;
+    font-size: 20px;
+    top: 89px;
+    left: -27px;
+    .bg {
+      @extend .circle;
+      @include square(68px);
+      left: 8px;
+      top: 8px;
+      z-index: 3;
+      border-width: 2px;
+    }
+    &:after {
+      display: block;
+      content: ' ';
+      position: absolute;
+      @include square(84px);
+      background-image: url('~@img/home/chart/arc.png');
+      z-index: -1;
+      animation: 6s rotateAnim linear infinite;
+      background-size: 84px 84px;
+    }
+    &:hover {
+      &:after {
+        opacity: 0;
+      }
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(183px, 110px) scale(0.01);
+      }
+    }
+  }
+  .onedns-node {
+    @include square(64px);
+    font-size: 12px;
+    position: absolute;
+    top: 250px;
+    left: -30px;
+    .bg {
+      @extend .circle;
+      @include square(64px);
+      border-width: 2px;
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(188px, 6px) scale(0.01);
+      }
+    }
+  }
+  .x-node {
+    @include square(32px);
+    position: absolute;
+    font-size: 16px;
+    top: 447px;
+    left: -228px;
+    .bg {
+      @extend .circle;
+      @include square(32px);
+      background: rgba(#2d84e5, 0.3);
+      border-width: 2px;
+      border-color: transparent;
+      color: #4a9fff;
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(404px, -132px) scale(0.01);
+      }
+    }
+  }
+  .s-node {
+    border-width: 3px;
+    top: 384px;
+    font-size: 24px;
+    left: 137px;
+    @include square(62px);
+    position: absolute;
+    .bg {
+      @include square(50px);
+      @extend .circle;
+      top: 6px;
+      left: 6px;
+
+    }
+    &:after {
+      display: block;
+      content: ' ';
+      position: absolute;
+      @include square(62px);
+      background-image: url('~@img/home/chart/gap-line.png');
+      animation: 6s rotateAnim linear infinite;
+      z-index: -1;
+    }
+    &:hover {
+      &:after {
+        opacity: 0;
+      }
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(51px, -46px) scale(0.01);
+      }
+    }
+  }
+  .tip-node {
+    @include square(68px);
+    top: 332px;
+    left: 463px;
+    font-size: 20px;
+    position: absolute;
+    .bg {
+      @include square(68px);
+      @extend .circle;
+      border-width: 2px;
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(-73px, -30px) scale(0.01);
+      }
+    }
+  }
+  .mdr-node {
+    @include square(86px);
+    top: 50px;
+    left: 188px;
+    font-size: 18px;
+    position: absolute;
+    .bg {
+      @extend .circle;
+      @include square(86px);
+      border-width: 2px;
+    }
+    &.selected {
+      .shadow {
+        opacity: 1;
+        transform: translate(31px, 85px) scale(0.01);
+      }
+    }
+  }
+  .intro-panel {
+    @keyframes scrollAnim {
+      0% {
+        max-height: 0;
+        background-position: 0 -80px;
+        opacity: 0.1;
+      }
+      70% {
+        opacity: 0.8;
+        max-height: 280px;
+      }
+      100% {
+        max-height: 300px;
+        opacity: 1;
+        background-position: 0 300px;
+      }
+    }
+    position: absolute;
+    left: 500px;
+    top: 107px;
+    width: 170px;
+    box-sizing: border-box;
+    border: 1px solid #2d84e5;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    transition: border-bottom-color 2s ease-out, border-top-color 2s ease-out;
+    &.active {
+      border-bottom-color: #2d84e5;
+      border-top-color: #2d84e5;
+    }
+    @include media('<=1360px') {
+      left: 440px;
+    }
+    .content {
+      background-color: #1759A3;
+      background-image: url('~@img/home/chart/gradient.png');
+      background-repeat: no-repeat;
+      background-position: 0 -80px;
+      box-sizing: border-box;
+      color: #66B3FF;
+      overflow: hidden;
+      margin: 4px;
+      box-sizing: border-box;
+      .title {
+        font-size: 14px;
+        padding: 20px 10px 0;
+      }
+      .separate {
+        width: 40px;
+        height: 4px;
+        background: #4b9cf6;
+        margin: 10px 10px;
+      }
+      .desc {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0 10px 20px;
+      }
+    }
+    &.fade-enter,
+    &.fade-appear {
+      border-bottom-color: transparent;
+      border-top-color: transparent;
+      .content {
+        max-height: 0;
+        opacity: 0.2;
+        margin: 0 4px;
+        background-position: 0 -80px;
+      }
+    }
+    &.fade-enter-active,
+    &.fade-appear-active {
+      border-bottom-color: #2d84e5;
+      border-top-color: #2d84e5;
+      .content {
+        transition: max-height 0.4s ease-out 1s, background-position 1s ease-out 1s, opacity 1s ease-out 1s, margin 0.1s ease 1s;
+        max-height: 300px;
+        margin: 4px;
+        opacity: 1;
+        background-position: 0 260px;
+      }
+    }
+    &.fade-exit {
+      border-bottom-color: #2d84e5;
+      border-top-color: #2d84e5;
+      .content {
+        transition: max-height 0.4s ease-in, opacity 0.4s ease-in, margin 0.1s ease 0.3s;
+        opacity: 0;
+        max-height: 300px;
+      }
+    }
+    &.fade-exit-active {
+      border-bottom-color: transparent;
+      border-top-color: transparent;
+      .content {
+        opacity: 1;
+        margin: 0 4px;
+        max-height: 0;
+      }
+    }
+  }
+}

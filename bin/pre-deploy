@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+/usr/local/bin/proxychains4 npm --registry=https://registry.npm.taobao.org install
+npm run build

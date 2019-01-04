@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "fe-www",
+      "script": "src/app.js",
+      "env": {
+        "NODE_ENV": "PRODUCTION"
+      },
+      "exec-interpreter": "./node_modules/@babel/node/bin/babel-node.js",
+      "node_args": "",
+      "exec_mode": "cluster_mode",
+      "instances": 0,
+      "log_date_format": "YYYY_MM_DD HH:mm Z",
+      "max_memory_restart": "700M",
+      "merge_logs": true,
+      "error_file": "/var/threatbook/logs/fe-www/error.log",
+      "out_file": "/var/threatbook/logs/fe-www/out.log",
+      "pid_file": "/var/threatbook/logs/fe-www/fe-www.pid",
+      "watch": false
+    }
+  ]
+}

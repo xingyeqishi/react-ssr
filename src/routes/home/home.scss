@@ -1,0 +1,25 @@
+@import './css/chart.scss';
+
+@import '~@css/breakpoint.scss';
+
+body {
+  overflow-x: hidden;
+}
+.layout-container {
+  background: url('~@img/home/banner.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  overflow-x: hidden;
+  @include media('<=phone') {
+    background-image: url('~@img/home/banner-m-bg.png');
+    background-repeat: no-repeat;
+    background-size: auto 736px;
+
+    @include resolution(2x) {
+      background-image: url('~@img/home/banner-m-bg@2x.png');
+    }
+    @include resolution(3x) {
+      background-image: url('~@img/home/banner-m-bg@3x.png');
+    }
+  }
+}

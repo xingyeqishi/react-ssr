@@ -1,0 +1,102 @@
+@import '~@css/breakpoint.scss';
+.banner {
+    padding-top: 80px;
+    margin-top: -80px;
+    box-sizing: border-box;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height: 520px;
+    text-align: left;
+
+    .banner-content {
+        max-width: var(--maxWidth);
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 0 120px;
+        .title {
+            margin-top: 158px;
+            font-size: 44px;
+            color: #fff;
+        }
+        .desc {
+            font-size: 16px;
+            color: #cfd1d9;
+            margin-top: 25px;
+            line-height: 30px;
+            list-style: none;
+            padding-left: 0;
+        }
+        &.center {
+            text-align: center;
+            .title {
+                text-align: center;
+            }
+        }
+    }
+
+    @include media('<=tablet') {
+        text-align: center;
+        .banner-content {
+            padding: 0 30px;
+            .title {
+                font-size: 24px;
+                margin-top: 228px;
+            }
+            .desc {
+                font-size: 14px;
+                color: #fff;
+                line-height: 25px;
+            }
+        }
+    }
+
+    @include media('<=phone') {
+        background-size: 100% 736px;
+        height: 640px;
+    }
+}
+#app .toast-container {
+    width: 100%;
+    padding: 4px 10px;
+    text-align: center;
+    left: 0;
+    margin-left: 0;
+
+    .my-toast {
+        background: #fff;
+        min-height: auto;
+        display: inline-block;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        color: #333;
+        padding: 8px 15px;
+
+        .toast-body,
+        .toast-error {
+            margin: 0;
+            line-height: 20px;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .toast-body:before,
+        .toast-error:before {
+            content: '!';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            background: #2d84e5;
+            color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .toast-error:before {
+            background: #d0021b;
+        }
+    }
+}

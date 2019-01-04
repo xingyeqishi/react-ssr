@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>返回顶部（hover）</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="首页下拉" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1590.000000, -4117.000000)">
+        <path d="M1593,4117 L1637,4117 C1638.65685,4117 1640,4118.34315 1640,4120 L1640,4164 C1640,4165.65685 1638.65685,4167 1637,4167 L1593,4167 C1591.34315,4167 1590,4165.65685 1590,4164 L1590,4120 C1590,4118.34315 1591.34315,4117 1593,4117 Z M1601.82843,4152.09188 L1615.26346,4138.65685 L1628.69848,4152.09188 L1631.52691,4149.26346 L1615.26346,4133 L1599,4149.26346 L1601.82843,4152.09188 Z" id="返回顶部（hover）" fill="#2D84E5"></path>
+    </g>
+</svg>
